@@ -22,25 +22,34 @@ ANIMAL_OUTS 테이블은 동물 보호소에서 입양 보낸 동물의 정보�
 |NAME             |VARCHAR(N)|TRUE    |
 |SEX_UPON_INTAKE  |VARCHAR(N)|FALSE   |
 
-관리자의 실수로 일부 동물의 입양일이 잘못 입력되었습니다. 보호 시작일보다 입양일이 더 빠른 동물의 아이디와 이름을 조회하는 SQL문을 작성해주세요. 이때 결과는 보호 시작일이 빠른 순으로 조회해야합니다.
+아직 입양을 못 간 동물 중, 가장 오래 보호소에 있었던 동물 3마리의 이름과 보호 시작일을 조회하는 SQL문을 작성해주세요. 이때 결과는 보호 시작일 순으로 조회해야 합니다.
 
 #### 예시
 예를 들어, ANIMAL_INS 테이블과 ANIMAL_OUTS 테이블이 다음과 같다면
 ANIMAL_INS
 
-|ANIMAL_ID	|ANIMAL_TYPE	|DATETIME	|INTAKE_CONDITION	|NAME	|SEX_UPON_INTAKE|
-|:----------|:--------------|:----------|:------------------|:------|:--------------|
-|A350726	|Cat	|2017-08-13 13:50:00	|Normal	|Jewel	|Spayed Female|
-|A381217	|Dog	|2017-07-08 09:41:00	|Sick	|Cherokee	|Neutered Male|
+|ANIMAL_ID	|ANIMAL_TYPE	|DATETIME	            |INTAKE_CONDITION	|NAME    	|SEX_UPON_INTAKE|
+|:----------|:--------------|:----------------------|:------------------|:----------|:--------------|
+|A354597	|Cat	        |2014-05-02 12:16:00	|Normal	            |Ariel	    |Spayed Female  |
+|A373687	|Dog	        |2014-03-20 12:31:00	|Sick	            |Rosie  	|Spayed Female  |
+|A412697	|Dog	        |2016-01-03 16:25:00	|Sick	            |Jackie	    |Neutered Male  |
+|A413789	|Dog	        |2016-04-19 13:28:00	|Sick	            |Benji	    |Spayed Female  |
+|A414198	|Dog	        |2015-01-29 15:01:00	|Sick	            |Shelly	    |Spayed Female  |
+|A368930	|Dog	        |2014-06-08 13:20:00	|Sick	            |	        |Spayed Female  |
 
 ANIMAL_OUTS
 |ANIMAL_ID	|ANIMAL_TYPE	|DATETIME	|NAME	|SEX_UPON_INTAKE|
 |:----------|:--------------|:----------|:------|:--------------|
-|A350726	|Cat	|2018-01-28 17:51:00	|Jewel	|Spayed Female|
-|A381217	|Dog	|2017-06-09 18:51:00	|Cherokee	|Spayed Female|
+|A354597	|Cat	|2014-05-02 12:16:00	|Ariel	|Spayed Female|
+|A373687	|Dog	|2014-03-20 12:31:00	|Rosie	|Spayed Female|
+|A368930	|Dog	|2014-06-13 15:52:00	|    	|Spayed Female|
 
 SQL문을 실행하면 다음과 같이 나와야 합니다.
 
-|ANIMAL_ID	|NAME	|
-|:----------|:------|
-|A381217	|Cherokee	|
+|NAME	    |DATE_TIME       	|
+|:----------|:------------------|
+|Shelly 	|2015-01-29 15:01:00|
+|Jackie 	|2016-01-03 16:25:00|
+|Benji  	|2016-04-19 13:28:00|
+
+※ 입양을 가지 못한 동물이 3마리 이상인 경우만 입력으로 주어집니다.
